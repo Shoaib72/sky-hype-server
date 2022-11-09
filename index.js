@@ -20,7 +20,7 @@ client.connect(err => {
 
 
 app.get('/', (req, res) => {
-    res.send('Sky Hype Server is Running!')
+    res.send('Sky Hype Server is Running!');
 })
 app.listen(port, () => {
     console.log(`Sky Hype Server Is Running On Port: ${port}`)
