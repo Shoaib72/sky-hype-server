@@ -23,5 +23,5 @@ app.get('/', (req, res) => {
     res.send('Sky Hype Server is Running!');
 })
 app.listen(port, () => {
-    console.log(`Sky Hype Server Is Running On Port: ${port}`)
+    console.log(`Sky Hype Server Is Running On Port: ${port}`);
 })
