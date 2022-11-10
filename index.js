@@ -17,6 +17,7 @@ console.log(uri)
 async function run() {
     try {
         const serviceCollection = client.db('skyHype').collection('services');
+        const reviewCollection = client.db('skyHype').collection('reviewAll');
         app.get('/home', async (req, res) => {
             const query = {};
             const cursor = serviceCollection.find(query).limit(3);
@@ -33,7 +34,12 @@ async function run() {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
             const service = await serviceCollection.findOne(query);
-            res.send(service);
+            const name = service.serviceName;
+            const reviews = await reviewCollection.find({ "serviceName": name }).toArray();
+
+            console.log(reviews)
+            console.log(name)
+            res.send({ service, reviews });
         });
         app.post('/services', async (req, res) => {
             const service = req.body;
